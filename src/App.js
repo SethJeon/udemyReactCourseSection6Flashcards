@@ -9,6 +9,7 @@ export default function App() {
   );
 }
 
+//사용할 리스트
 const questions = [
   {
     id: 3457,
@@ -44,21 +45,28 @@ const questions = [
 ];
 
 function FlashCards() {
+  //State를 사용할 세가지 Step!
+
+  //먼저 useState()를 사용하여 default value와 작동 함수명 설정하기!
   const [selectedId, setSelectedId] = useState(null);
 
   function handleClick(id) {
+    // id !== selectedId ? id : null 를 해석 하면 id 가 selectedId와 같지 않다면 id값을 return! else return null! 반대로 말하면 같다면 null 값을 return 한다!
     setSelectedId(id !== selectedId ? id : null);
   }
 
   return (
     <div className="flashcards">
+      {/* Map method를 이용하여 Array의 갯수만큼 <div>엘리먼트를 생성하기!  */}
       {questions.map((question) => (
         <div
+          //JSX에서는 key value를 무조건 설정해주어야한다
           key={question.id}
           onClick={() => handleClick(question.id)}
           className={question.id === selectedId ? "selected" : ""}
         >
           <p>
+            {/* 선택된 아이디 값에 때라 해당 요소를 return 하기 */}
             {question.id === selectedId ? question.answer : question.question}
           </p>
         </div>
