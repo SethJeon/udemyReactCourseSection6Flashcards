@@ -62,7 +62,9 @@ function FlashCards() {
         <div
           //JSX에서는 key value를 무조건 설정해주어야한다
           key={question.id}
+          // div 클릭시 handClick()에 해당 id 값을 전달하고 함수 실행하기
           onClick={() => handleClick(question.id)}
+          // 선택된 id 값에 따라 css style 부여하기
           className={question.id === selectedId ? "selected" : ""}
         >
           <p>
